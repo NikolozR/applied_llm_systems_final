@@ -1,5 +1,7 @@
 from message import *
 from schemas import *
+from concurrent.futures import ThreadPoolExecutor
+
 
 def distribute_roles(model_confidences, models):
     best_judge_model = None
@@ -69,3 +71,17 @@ def get_refinement(solver_id, solver_convo, all_feedbacks):
         "solver_id": solver_id,
         "refined_response": refinement_response
     }
+
+def get_initial_solution(solver_id, model_name, convo, question):
+    response = convo.send_message(get_solver_prompt(question), SolverResponse)
+    return {
+        "solver_id": solver_id,
+        "model": model_name,
+        "response": response
+    }
+
+def run_parallel_task(task_func, items, *args):    
+    with ThreadPoolExecutor() as executor:
+        futures = [executor.submit(task_func, item, *args) for item in items]
+        results = [future.result() for future in futures]
+    return results

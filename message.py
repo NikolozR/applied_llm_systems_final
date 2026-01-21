@@ -30,6 +30,11 @@ You have been selected as a **Solver** for the intellectual game 'What? Where? W
 2. **Generate Hypotheses:** Brainstorm potential answers. Connect disparate facts.
 3. **Refine & Select:** Perform a logical consistency check. Discard weak theories. Select the most precise and elegant answer that fits all the facts.
 4. **Explain Your Solution:** Provide a clear, step-by-step explanation of your reasoning path. Why is this answer the only correct one? What specific steps led you to it?
+
+**Constraint Checklist & Confidence Score:**
+1. Check constraints! "What? Where? When?" questions often ask for a specific number of words or a short phrase.
+2. Ensure your final answer is **concise**. NO preamble. Just the answer.
+3. Provide a confidence score (0.0 - 1.0).
 """
 
 
@@ -60,3 +65,48 @@ Analyze this feedback carefully.
 4. Provide a final, refined solution and answer.
 
 Respond using the structured format."""
+
+def get_judge_prompt(question, original_answers, peer_feedbacks, refined_solutions):
+    # Format inputs for the prompt
+    
+    # Original Answers
+    orig_text = "\n".join([f"Solver {ans['solver_id']} ({ans['model']}): {ans['response'].answer}\nExplanation: {ans['response'].explanation}\n" for ans in original_answers])
+    
+    # Peer Feedbacks
+    feedback_text = ""
+    for pf in peer_feedbacks:
+        feedback_text += f"\nReviewer {pf['reviewer_id']} feedback:\n"
+        for fb in pf['feedbacks'].feedbacks:
+            feedback_text += f"- To {fb.solution_id}: Assessment: {fb.overall_assessment}, Critique: {fb.evaluation.errors}\n"
+            
+    # Refined Answers
+    refined_text = "\n".join([f"Solver {res['solver_id']}:\nRefined Answer: {res['refined_response'].refined_answer}\nExplanation: {res['refined_response'].refined_solution}\nConfidence: {res['refined_response'].confidence}\nChanges: {[c.response for c in res['refined_response'].changes_made]}\n" for res in refined_solutions])
+
+    return f"""You are the Judge in this intellectual competition.
+    
+**The Question:**
+{question}
+
+---
+**Phase 1: Original Solutions**
+{orig_text}
+
+---
+**Phase 2: Peer Feedback**
+Solvers reviewed each other's work:
+{feedback_text}
+
+---
+**Phase 3: Refined Solutions**
+After considering feedback, solvers improved their answers:
+{refined_text}
+
+---
+**Your Task:**
+1. Evaluate the final refined solutions.
+2. Consider how well they addressed valid critiques.
+3. Select the single best solution.
+4. Explain your reasoning and provide a confidence score.
+5. Provide the exact text of the winning answer.
+
+Choose the WINNER."""

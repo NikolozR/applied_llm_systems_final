@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List
 
 class RoleConfidenceEntry(BaseModel):
@@ -40,7 +40,13 @@ class ChangeResponse(BaseModel):
     accepted: bool
 
 class RefinedSolution(BaseModel):
-    changes_made: List[ChangeResponse]
-    refined_solution: str
-    refined_answer: str
+    changes_made: List[ChangeResponse] = Field(description="List of critiques addressed and changes made")
+    refined_solution: str = Field(description="The full detailed explanation and reasoning process leading to the answer")
+    refined_answer: str = Field(description="The short, concise final answer requested by the user, e.g., a few words or a number")
+    confidence: float = Field(description="Confidence score between 0.0 and 1.0")
+
+class FinalDecision(BaseModel):
+    winner: str
+    winning_answer: str
     confidence: float
+    reasoning: str
