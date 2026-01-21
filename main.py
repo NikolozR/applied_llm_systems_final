@@ -2,24 +2,32 @@ from utils import *
 from message import *
 from schemas import *
 
-convo_4o = CustomConversation('OpenAI', 'gpt-4o')
-convo_5 = CustomConversation('OpenAI', 'gpt-5.2-2025-12-11')
+from concurrent.futures import ThreadPoolExecutor
 
-response_4o = convo_4o.send_message(ROLE_SELECTION_PROMPT, RolePreference)
-response_5 = convo_5.send_message(ROLE_SELECTION_PROMPT, RolePreference)
+models = [
+    ('OpenAI', 'gpt-4o'),
+    ('OpenAI', 'gpt-5.2-2025-12-11'),
+    ('Gemini', 'gemini-3-pro-preview'),
+    ('Gemini', 'gemini-2.0-flash-lite-001')
+]
 
-
-
-model_confidences = [
-    {
-        "model": "gpt-4o",
-        "confidences": [entry.model_dump() for entry in response_4o.output_parsed.confidence_by_role]
-    },
-    {
-        "model": "gpt-5.2-2025-12-11",
-        "confidences": [entry.model_dump() for entry in response_5.output_parsed.confidence_by_role]
+def get_model_response(provider, model_name):
+    convo = CustomConversation(provider, model_name)
+    response = convo.send_message(ROLE_SELECTION_PROMPT, RolePreference)
+    return {
+        "model": model_name,
+        "confidences": [entry.model_dump() for entry in response.confidence_by_role]
     }
-] 
+
+with ThreadPoolExecutor() as executor:
+    futures = [
+        executor.submit(get_model_response, provider, model) 
+        for provider, model in models
+    ]
+    model_confidences = [future.result() for future in futures]
+
+
+
 
 print(model_confidences)
 print("==============================================================================")
