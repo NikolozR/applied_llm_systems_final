@@ -1,4 +1,4 @@
-def distribute_roles(model_confidences):
+def distribute_roles(model_confidences, models):
     best_judge_model = None
     max_judge_score = -1.0
 
@@ -13,10 +13,17 @@ def distribute_roles(model_confidences):
 
     final_assignments = {}
     
+    # Create lookup map for models
+    # models structure is assumed to be list of tuples: [(name, conversation), ...]
+    model_lookup = {name: convo for name, convo in models}
+    
     for model_data in model_confidences:
         model_name = model_data['model']
-        if model_data == best_judge_model:
-            final_assignments[model_name] = 'Judge'
-        else:
-            final_assignments[model_name] = 'Solver'
+        role = 'Judge' if model_data == best_judge_model else 'Solver'
+        
+        final_assignments[model_name] = {
+            'role': role,
+            'conversation': model_lookup.get(model_name)
+        }
+            
     return final_assignments

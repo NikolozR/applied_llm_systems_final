@@ -19,3 +19,17 @@ Based on your capabilities and strengths, which role would you prefer to take? C
 - Your ability to evaluate and critique solutions objectively
 
 Please respond with your role preferences in order, confidence scores for each role variant (0-1 scale), and detailed reasoning explaining why you chose these preferences based on the nature of "What? Where? When?" questions."""
+
+def get_solver_prompt(question):
+    return f"""{question}
+
+You have been selected as a **Solver** for the intellectual game 'What? Where? When?'. Your task is to solve the following question using your broad knowledge, logical reasoning, and ability to make non-obvious connections.
+
+**Your Goal:**
+1. **Analyze the Question:** Break down the text, identify key keywords, metaphors, and hidden clues. Pay attention to specific phrasing.
+2. **Generate Hypotheses:** Brainstorm potential answers. Connect disparate facts.
+3. **Refine & Select:** Perform a logical consistency check. Discard weak theories. Select the most precise and elegant answer that fits all the facts.
+4. **Explain Your Solution:** Provide a clear, step-by-step explanation of your reasoning path. Why is this answer the only correct one? What specific steps led you to it?
+
+**Constraint:**
+- Ensure your explanation explicitly details the logical steps taken to arrive at the final answer."""

@@ -9,3 +9,7 @@ class RolePreference(BaseModel):
     role_preferences: List[str]
     confidence_by_role: List[RoleConfidenceEntry]
     reasoning: str
+
+class SolverResponse(BaseModel):
+    answer: str
+    explanation: str
