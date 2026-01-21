@@ -30,6 +30,33 @@ You have been selected as a **Solver** for the intellectual game 'What? Where? W
 2. **Generate Hypotheses:** Brainstorm potential answers. Connect disparate facts.
 3. **Refine & Select:** Perform a logical consistency check. Discard weak theories. Select the most precise and elegant answer that fits all the facts.
 4. **Explain Your Solution:** Provide a clear, step-by-step explanation of your reasoning path. Why is this answer the only correct one? What specific steps led you to it?
+"""
 
-**Constraint:**
-- Ensure your explanation explicitly details the logical steps taken to arrive at the final answer."""
+
+def get_feedback_prompt(others_solutions):
+    solutions_text = "\n\n".join([f"Solution ID: {sol['solver_id']}\nAnswer: {sol['response'].answer}\nExplanation: {sol['response'].explanation}" for sol in others_solutions])
+    
+    return f"""You are now acting as a peer reviewer. Review the following solutions provided by other solvers for the question you just solved.
+    
+{solutions_text}
+
+Provide detailed feedback for EACH solution using the structured format. 
+- Identify logical errors, weak arguments, or missing steps.
+- Highlight strengths.
+- Offer constructive suggestions for improvement.
+- Be critical but fair."""
+
+def get_refinement_prompt(feedbacks):
+    feedback_text = "\n\n".join([f"Feedback from Solver {fb['reviewer_id']}:\nAssessment: {fb['feedbacks'].overall_assessment}\nCritique: {fb['feedbacks'].evaluation.errors}\nSuggestions: {fb['feedbacks'].evaluation.suggested_changes}" for fb in feedbacks])
+    
+    return f"""You have received feedback from other solvers on your initial solution:
+
+{feedback_text}
+
+Analyze this feedback carefully.
+1. Evaluate each critique point: Is it valid? Did you miss something?
+2. If the critique is valid, refine your solution.
+3. If you disagree, explain why.
+4. Provide a final, refined solution and answer.
+
+Respond using the structured format."""

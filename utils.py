@@ -1,3 +1,6 @@
+from message import *
+from schemas import *
+
 def distribute_roles(model_confidences, models):
     best_judge_model = None
     max_judge_score = -1.0
@@ -27,3 +30,42 @@ def distribute_roles(model_confidences, models):
         }
             
     return final_assignments
+
+def get_role_decision(model_name, convo):
+    response = convo.send_message(ROLE_SELECTION_PROMPT, RolePreference)
+    return {
+        "model": model_name,
+        "confidences": [entry.model_dump() for entry in response.confidence_by_role]
+    }
+
+def get_feedback(reviewer_id, reviewer_convo, all_answers):
+    others_answers = [ans for ans in all_answers if ans['solver_id'] != reviewer_id]
+    prompt = get_feedback_prompt(others_answers)
+    feedback_response = reviewer_convo.send_message(prompt, PeerFeedbackList)
+    return {
+        "reviewer_id": reviewer_id,
+        "feedbacks": feedback_response
+    }
+
+def get_refinement(solver_id, solver_convo, all_feedbacks):
+    # Filter feedbacks for this solver
+    # In peer_feedbacks, each entry is from a reviewer. We need to find feedbacks TARGETING this solver_id.
+    relevant_feedbacks = []
+    for pf in all_feedbacks:
+        # pf is {reviewer_id, feedbacks: PeerFeedbackList}
+        # feedbacks.feedbacks is list[PeerFeedback]
+        # PeerFeedback has solution_id which should match solver_id
+        for fb in pf['feedbacks'].feedbacks:
+            if fb.solution_id == solver_id:
+                relevant_feedbacks.append({
+                    'reviewer_id': pf['reviewer_id'],
+                    'feedbacks': fb # actually PeerFeedback object
+                })
+    
+    prompt = get_refinement_prompt(relevant_feedbacks)
+    refinement_response = solver_convo.send_message(prompt, RefinedSolution)
+    
+    return {
+        "solver_id": solver_id,
+        "refined_response": refinement_response
+    }
