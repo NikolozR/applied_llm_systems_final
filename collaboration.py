@@ -74,6 +74,8 @@ def run_collaborative_solving(question: str, judge: Optional[Judge], solvers: Li
         print(f"Accepted Changes: {sum(1 for c in rr.changes_made if c.accepted)}/{len(rr.changes_made)}")
 
     # 5. Judge Decision Phase
+    # 5. Judge Decision Phase
+    final_verdict = None
     if judge:
         print("\nJudge is deciding...")
         final_verdict = judge.decide(question, solver_answers, peer_feedbacks, refined_results)
@@ -86,7 +88,29 @@ def run_collaborative_solving(question: str, judge: Optional[Judge], solvers: Li
         print(f"Confidence: {final_verdict.confidence}")
         print(f"Reasoning: {final_verdict.reasoning}")
         print("="*40)
-        return final_verdict
     else:
         print("\nJudge decision skipped due to missing judge.")
-        return None
+
+    # Prepare detailed output
+    return {
+        "initial_solutions": [
+            {
+                "solver_id": ans['solver_id'],
+                "model": ans['model'],
+                "response": ans['response'].model_dump()
+            } for ans in solver_answers
+        ],
+        "peer_feedbacks": [
+            {
+                "reviewer_id": pf['reviewer_id'],
+                "feedbacks": pf['feedbacks'].model_dump()
+            } for pf in peer_feedbacks
+        ],
+        "refined_solutions": [
+            {
+                "solver_id": res['solver_id'],
+                "refined_response": res['refined_response'].model_dump()
+            } for res in refined_results
+        ],
+        "final_verdict": final_verdict.model_dump() if final_verdict else None
+    }

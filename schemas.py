@@ -50,3 +50,7 @@ class FinalDecision(BaseModel):
     winning_answer: str
     confidence: float
     reasoning: str
+
+class EvaluationResult(BaseModel):
+    question_number: int
+    is_correct: bool

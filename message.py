@@ -110,3 +110,18 @@ After considering feedback, solvers improved their answers:
 5. Provide the exact text of the winning answer.
 
 Choose the WINNER."""
+
+def get_evaluation_prompt(q_num, question, correct, winning_ans):
+    return f"""You are an objective evaluator for a QA system.
+        
+Question ({q_num}): {question}
+Correct Answer: {correct}
+
+System's Answer: {winning_ans}
+
+Task: Determine if the System's Answer is semantically correct based on the Correct Answer. 
+Ignore minor phrasing differences, capitalization, or punctuation. Focus on the core meaning.
+Return your decision as a JSON object with:
+- question_number by integer: {q_num}
+- is_correct: true/false
+"""
