@@ -1,4 +1,34 @@
-{
-  "question": "A small bird native to Australian forests, the wattlebird honeyeater, is on the verge of extinction. The situation is made more difficult by the fact that these birds have trouble forming pairs. To help them, ornithologists capture the males and keep them in cages for a certain period of time. During this time, scientists effectively become \"X\" for the birds.\nQuestion: Name X in two words.",
-  "answer": ["Vocal Teacher", "Singing Teacher"]
-}
+[
+  {
+    "question": "A small bird native to Australian forests, the wattlebird honeyeater, is on the verge of extinction. The situation is made more difficult by the fact that these birds have trouble forming pairs. To help them, ornithologists capture the males and keep them in cages for a certain period of time. During this time, scientists effectively become \"X\" for the birds.\nQuestion: Name X in two words.",
+    "answer": "Vocal Teacher"
+  },
+  {
+    "question": "In one humorous social ad, visitors come to the doctor at night. The father asks whether unvaccinated children are dangerous for his son. The point is that the visitors are X s. Name X s with a non-georgian word.",
+    "answer": "Vampire"
+  },
+  {
+    "question": "In the miniature of Kyrie Gray, this woman shoots a video in the so-called \"unboxing\" genre, and it is followed by a stream of negative comments. Guess the name of this woman.",
+    "answer": "Pandora"
+  },
+  {
+    "question": "After a trip to the south of France, a Soviet tourist, while describing the visitors of the X, mentions laboratory workers who were waiting in amazement for the results of the experiment. Name the X with a word of Italian origin.",
+    "answer": "Casino"
+  },
+  {
+    "question": "A 1960s article that was published in the \"Chicago Tribune\", it is recommended to do this in the morning so as not to scare passersby and not to arouse the suspicion of the police. What do we changed by \"do this\"?",
+    "answer": ["Running", "Cardio"]
+  },
+  {
+    "question": "At the opening ceremony of the 2018 Olympics, dancers depicted the X, which many took to be part of a Pepsi advertising campaign. Describe the X in several (max 5) words.",
+    "answer": "Flag of South Korea"
+  },
+  {
+    "question": "In a modern film, a wealthy character looks at a filled cup of coffee to evaluate a hired worker. Name the profession of this worker.",
+    "answer": "Driver"
+  },
+  {
+    "question": "In 1967, a well-known company purchased a large plot of land in the state of Florida, where, along with other buildings, the X was later built. You can see the X in the logo of this company. Name the X with two words that start with the same two letters.",
+    "answer": "Cindarella Castle"
+  }
+]

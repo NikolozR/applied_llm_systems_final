@@ -1,8 +1,6 @@
-from conversation import *
-from message import *
-from schemas import *
-from utils import *
-from concurrent.futures import ThreadPoolExecutor
+from conversation import CustomConversation
+from utils import distribute_roles, run_parallel_task
+from agents import Agent, Solver, Judge
 
 question = "In one of Indonesia’s schools, a cat helps the teacher maintain discipline in the lower grades. Question: What will the cat do if the students start making noise?"
 
@@ -15,35 +13,36 @@ models = [
 
 # 1. Role Selection
 print("Selecting Roles...")
+agents = [Agent(m[0], m[1]) for m in models]
 model_confidences = run_parallel_task(
-    lambda item: get_role_decision(item[0], item[1]), 
-    models
+    lambda a: a.get_role_preferences(), 
+    agents
 )
 
 assignments = distribute_roles(model_confidences, models)
 
-judge_assignment = None
-solvers_assignments = []
+judge = None
+solvers = []
 
 solver_id_counter = 1
 for model_name, data in assignments.items():
     if data['role'] == 'Judge':
-        judge_assignment = {'model': model_name, 'conversation': data['conversation']}
+        judge = Judge(model_name, data['conversation'])
     else:
-        solvers_assignments.append({
-            'solver_id': f'solver_{solver_id_counter}',
-            'model': model_name, 
-            'conversation': data['conversation']
-        })
+        solvers.append(Solver(model_name, data['conversation'], f'solver_{solver_id_counter}'))
         solver_id_counter += 1
 
-print(f"\nJudge: {judge_assignment['model']}")
-print(f"Solvers: {[s['solver_id'] + ' (' + s['model'] + ')' for s in solvers_assignments]}")
+if judge:
+    print(f"\nJudge: {judge.model_name}")
+else:
+    print("\nNo Judge assigned!")
+
+print(f"Solvers: {[s.solver_id + ' (' + s.model_name + ')' for s in solvers]}")
 
 # 2. Initial Solutions
 solver_answers = run_parallel_task(
-    lambda s: get_initial_solution(s['solver_id'], s['model'], s['conversation'], question),
-    solvers_assignments
+    lambda s: s.initial_solve(question),
+    solvers
 )
 
 print("\n--- Initial Answers ---")
@@ -53,11 +52,9 @@ for ans in solver_answers:
 # 3. Peer Feedback Phase
 print("\nGenerating Peer Feedbacks...")
 
-solver_conversations = {s['solver_id']: s['conversation'] for s in solvers_assignments}
-
 peer_feedbacks = run_parallel_task(
-    lambda ans: get_feedback(ans['solver_id'], solver_conversations[ans['solver_id']], solver_answers),
-    solver_answers
+    lambda s: s.peer_review(solver_answers),
+    solvers
 )
 
 print("\n--- Peer Feedback Summaries ---")
@@ -69,8 +66,8 @@ for pf in peer_feedbacks:
 print("\nRefining Solutions...")
 
 refined_results = run_parallel_task(
-    lambda ans: get_refinement(ans['solver_id'], solver_conversations[ans['solver_id']], peer_feedbacks),
-    solver_answers
+    lambda s: s.refine_solution(peer_feedbacks),
+    solvers
 )
 
 print("\n--- Refined Solutions ---")
@@ -79,21 +76,18 @@ for res in refined_results:
     print(f"{res['solver_id']} | Confidence: {rr.confidence} | Answer: {rr.refined_answer}")
     print(f"Accepted Changes: {sum(1 for c in rr.changes_made if c.accepted)}/{len(rr.changes_made)}")
 
-
-judge_convo = judge_assignment['conversation']
-
 # 5. Judge Decision Phase
-print("\nJudge is deciding...")
-prompt = get_judge_prompt(question, solver_answers, peer_feedbacks, refined_results)
-final_verdict = judge_convo.send_message(prompt, FinalDecision)
+if judge:
+    print("\nJudge is deciding...")
+    final_verdict = judge.decide(question, solver_answers, peer_feedbacks, refined_results)
 
-print("\n" + "="*40)
-print("FINAL VERDICT")
-print("="*40)
-print(f"Winner: {final_verdict.winner}")
-print(f"Winning Answer: {final_verdict.winning_answer}")
-print(f"Confidence: {final_verdict.confidence}")
-print(f"Reasoning: {final_verdict.reasoning}")
-print("="*40)
-
-
+    print("\n" + "="*40)
+    print("FINAL VERDICT")
+    print("="*40)
+    print(f"Winner: {final_verdict.winner}")
+    print(f"Winning Answer: {final_verdict.winning_answer}")
+    print(f"Confidence: {final_verdict.confidence}")
+    print(f"Reasoning: {final_verdict.reasoning}")
+    print("="*40)
+else:
+    print("\nJudge decision skipped due to missing judge.")
