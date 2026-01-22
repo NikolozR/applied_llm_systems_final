@@ -1,4 +1,5 @@
 from typing import Literal, Optional, Any
+import time
 from constants import openai_client, gemini_client
 from google import genai
 
@@ -16,32 +17,51 @@ class CustomConversation:
             self.conversation = openai_client.conversations.create()
 
     def send_message(self, message: str, structured_output: Optional[Any] = None) -> Any:
-        if self.api_provider == 'Gemini':
-            if structured_output:
-                response = self.conversation.send_message(
-                    message,
-                    config=genai.types.GenerateContentConfig(
-                        response_mime_type="application/json",
-                        response_schema=structured_output
-                    )
-                )
-                return structured_output.model_validate_json(response.text)
-            else:
-                response = self.conversation.send_message(message)
-            return response
-        else:
-            if structured_output:
-                response = openai_client.responses.parse(
-                    model=self.model,
-                    input=[{"role": "user", "content": message}],
-                    conversation=self.conversation.id,
-                    text_format=structured_output
-                )
-                return response.output_parsed
-            else:
-                response = openai_client.responses.create(
-                    model=self.model,
-                    input=[{"role": "user", "content": message}],
-                    conversation=self.conversation.id
-                )
-            return response
+        retries = 0
+        max_retries = 5
+        base_delay = 2
+
+        while retries < max_retries:
+            try:
+                if self.api_provider == 'Gemini':
+                    if structured_output:
+                        response = self.conversation.send_message(
+                            message,
+                            config=genai.types.GenerateContentConfig(
+                                response_mime_type="application/json",
+                                response_schema=structured_output
+                            )
+                        )
+                        return structured_output.model_validate_json(response.text)
+                    else:
+                        response = self.conversation.send_message(message)
+                    return response
+                else:
+                    if structured_output:
+                        response = openai_client.responses.parse(
+                            model=self.model,
+                            input=[{"role": "user", "content": message}],
+                            conversation=self.conversation.id,
+                            text_format=structured_output
+                        )
+                        return response.output_parsed
+                    else:
+                        response = openai_client.responses.create(
+                            model=self.model,
+                            input=[{"role": "user", "content": message}],
+                            conversation=self.conversation.id
+                        )
+                    return response
+
+            except Exception as e:
+                # Check for rate limit errors in message
+                error_msg = str(e).lower()
+                if "rate limit" in error_msg or "429" in error_msg:
+                    wait_time = base_delay * (2 ** retries)
+                    print(f"Rate limit hit for {self.model}. Retrying in {wait_time}s...")
+                    time.sleep(wait_time)
+                    retries += 1
+                else:
+                    raise e
+        
+        raise Exception(f"Max retries exceeded for {self.model}")

@@ -35,7 +35,7 @@ def distribute_roles(model_confidences, models):
 
 
 def run_parallel_task(task_func, items, *args):    
-    with ThreadPoolExecutor() as executor:
+    with ThreadPoolExecutor(max_workers=2) as executor:
         futures = [executor.submit(task_func, item, *args) for item in items]
         results = [future.result() for future in futures]
     return results

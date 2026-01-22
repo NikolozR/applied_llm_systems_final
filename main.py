@@ -8,8 +8,8 @@ if __name__ == "__main__":
 
     models = [
         ('gpt-4o', CustomConversation('OpenAI', 'gpt-4o')),
-        ('gpt-5.2-2025-12-11', CustomConversation('OpenAI', 'gpt-5.2-2025-12-11')),
-        ('gemini-3-pro-preview', CustomConversation('Gemini', 'gemini-3-pro-preview')),
+        ('gpt-5-mini-2025-08-07', CustomConversation('OpenAI', 'gpt-5-mini-2025-08-07')),
+        ('gemini-2.5-flash', CustomConversation('Gemini', 'gemini-2.5-flash')),
         ('gemini-2.0-flash-lite-001', CustomConversation('Gemini', 'gemini-2.0-flash-lite-001'))
     ]
 
