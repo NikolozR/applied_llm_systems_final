@@ -66,5 +66,37 @@
   {
     "question": "(Attention, fourth question) An American sergeant recalled that during World War II, amidst an artillery bombardment, he suddenly burst out laughing and tears of happiness came to his eyes because he remembered this. Write this down as precisely as possible.",
     "answer": ["Fourth of July", "US independence day"]
+  },
+  {
+    "question": "A character from a novel who had returned from India was found suffocated in his bedroom, but in such a way that no human could have entered the victim's room. The detective realizes who or what the culprit is and asks his partner if he has read this work. Name this work!",
+    "answer": "The Murders in the Rue Morgue"    
+  },
+  {
+    "question": "A character in an English-language TV series wants to break up with his girlfriend, so he uses a long business trip to an Arab country as an excuse. The character's uneducated friend agrees with his buddy and says that it really does sound like the name of a country. Write the name of this Arab country!",
+    "answer": "Yemen"    
+  },
+  {
+    "question": "In a fantasy novel, an alien returns to the spaceship and starts changing shoes, which causes the humans present to smile. Question: Which Earth creature does this character resemble?",
+    "answer": ["Cat", "Puss"]    
+  },
+  {
+    "question": "They say that in the 19th century sperm whales displayed rare intelligence and learned how to escape from hunters, which led to a sharp decline in the whaling industry. When they saw a ship, the whales would start swimming. Which three words were omitted from the previous sentence?",
+    "answer": "Against the wind"    
+  },
+  {
+    "question": "Some art historians see an imitation of a biblical scene in David’s The Death of Marat. Accordingly, they associate the wound inflicted by Charlotte Corday with another wound. Write the name of the person who inflicted that wound.",
+    "answer": "Longinus"    
+  },
+  {
+    "question": "Because of X, the basketball players of the basketball circus “Harlem Globetrotters” had to perform two shows in one day. Name X using one word of Latin origin.",
+    "answer": "Segregation"    
+  },
+  {
+    "question": "Because of so many concerts and constant touring, Robert Smith (the vocalist of the rock band The Cure) told the band’s manager that X had developed. We are not asking you to name X. Name a rock band whose name begins with the same four letters as X.",
+    "answer": "Aerosmith"    
+  },
+  {
+    "question": "In a modern interpretation, X is presented as a nine-story building, on one floor of which a husband regularly beats his wife, and on another floor the family indifferently votes for a bloody dictator. Name X in one word.",
+    "answer": "Hell"    
   }
 ]

@@ -14,6 +14,15 @@ def analyze_performance(results_path="results.json", evaluation_path="final_eval
     total_questions = len(results) or 1
     system_correct_count = 0
     
+    total_initial_solvers = 0
+    total_initial_correct = 0
+    total_refined_solvers = 0
+    total_refined_correct = 0
+    voting_correct = 0
+    consensus_count = 0
+    disagreement_cases = 0
+    judge_correct_disagreement = 0
+    
     solvers_improved_count = 0 # Initial=False -> Refined=True
     solvers_regressed_count = 0 # Initial=True -> Refined=False
     total_solver_pairs = 0

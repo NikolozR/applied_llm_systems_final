@@ -1,7 +1,6 @@
 import json
 from conversation import CustomConversation
 from collaboration import run_collaborative_solving, assign_roles
-from schemas import EvaluationResult
 from utils import run_final_evaluation
 
 if __name__ == "__main__":
@@ -18,9 +17,21 @@ if __name__ == "__main__":
     judge, solvers = assign_roles(models)
 
     results = []
+    processed_ids = set()
+    try:
+        with open("results.json", "r") as f:
+            results = json.load(f)
+            processed_ids = {item['id'] for item in results}
+            print(f"Resuming: Found {len(results)} completed questions.")
+    except (FileNotFoundError, json.JSONDecodeError):
+        print("Starting fresh (no existing results).")
     
     # Process Questions
     for i, item in enumerate(questions_data, 1):
+        if i in processed_ids:
+            print(f"Skipping Question {i} (already processed)")
+            continue
+
         question_text = item['question']
         correct_answer = item['answer']
         
@@ -34,8 +45,10 @@ if __name__ == "__main__":
             "process_output": process_output
         })
         
-    with open("results.json", "w") as f:
-        json.dump(results, f, indent=2)
+        # Save incrementally
+        with open("results.json", "w") as f:
+            json.dump(results, f, indent=2)
+            
     print("\nAll processing complete. Results saved to results.json")
 
     # Final Evaluation Phase

@@ -17,9 +17,10 @@ class CustomConversation:
             self.conversation = openai_client.conversations.create()
 
     def send_message(self, message: str, structured_output: Optional[Any] = None) -> Any:
+        import random
         retries = 0
-        max_retries = 5
-        base_delay = 2
+        max_retries = 15  # Increased from 5 to 15
+        base_delay = 4    # Increased base delay
 
         while retries < max_retries:
             try:
@@ -57,11 +58,12 @@ class CustomConversation:
                 # Check for rate limit errors in message
                 error_msg = str(e).lower()
                 if "rate limit" in error_msg or "429" in error_msg:
-                    wait_time = base_delay * (2 ** retries)
-                    print(f"Rate limit hit for {self.model}. Retrying in {wait_time}s...")
+                    # Exponential backoff with jitter
+                    wait_time = (base_delay * (2 ** retries)) + random.uniform(0, 1)
+                    print(f"Rate limit hit for {self.model}. Retrying in {wait_time:.1f}s...")
                     time.sleep(wait_time)
                     retries += 1
                 else:
                     raise e
         
-        raise Exception(f"Max retries exceeded for {self.model}")
+        raise Exception(f"Max retries exceeded for {self.model} after {max_retries} attempts.")

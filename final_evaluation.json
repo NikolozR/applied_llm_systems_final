@@ -41,5 +41,1037 @@
         "is_correct": false
       }
     ]
+  },
+  {
+    "question_number": 2,
+    "is_correct": false,
+    "winning_answer": "carriers",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "zombie",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "carriers",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Vampires",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "carriers",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "carriers",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Vampires",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "question_number": 3,
+    "is_correct": true,
+    "winning_answer": "Pandora",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Pandora",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Pandora",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Kyrie Irving",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Pandora",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "Pandora",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Kyrie Irving",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 4,
+    "is_correct": false,
+    "winning_answer": "Monte Carlo",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "casino",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Monte Carlo",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Villa",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Monte Carlo",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "Monte Carlo",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Villa",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 5,
+    "is_correct": false,
+    "winning_answer": "a pumpkin (into a jack\u2011o'\u2011lantern)",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "move furniture",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "a pumpkin",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Picket",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "a pumpkin",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "a pumpkin (into a jack\u2011o'\u2011lantern)",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Jack-O-Lantern",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 6,
+    "is_correct": false,
+    "winning_answer": "red-and-blue taeguk symbol",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Korean yin and yang symbol",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Korean yin-yang (taeguk) symbol",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Double helix dance",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "red-blue Taeguk symbol",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "red-and-blue taeguk symbol",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Taeguk symbol dance",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 7,
+    "is_correct": false,
+    "winning_answer": "butler",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "chauffeur",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "barista",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Butler",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Butler",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "butler",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Butler",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 8,
+    "is_correct": true,
+    "winning_answer": "Cinderella Castle",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Cinderella Castle",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Cinderella Castle",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Mickey Mouse",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Main Street",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "Cinderella Castle",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Cinderella Castle",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "question_number": 9,
+    "is_correct": false,
+    "winning_answer": "rubber",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "rubber",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "disposable",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "bath",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "disposable",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "rubber",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "disposable",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 10,
+    "is_correct": true,
+    "winning_answer": "heart transplant",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "heart transplant",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Super Bowl",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "curse of",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "heart transplant",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "heart transplant",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Heart Transplant",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "question_number": 11,
+    "is_correct": false,
+    "winning_answer": "ankle monitor",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "prosthetic leg",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "work release",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "electronic ankle",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "ankle monitor",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "ankle monitor",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Ankle monitor",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 12,
+    "is_correct": false,
+    "winning_answer": "hitman",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "suicidal",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "hitman",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "hitman",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "hitman",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "hitman",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "hitman",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 13,
+    "is_correct": true,
+    "winning_answer": "Lord of the Flies",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Brave New World",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Little Prince",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Catch-22",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Little Prince",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "Lord of the Flies",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Little Prince",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 14,
+    "is_correct": true,
+    "winning_answer": "Kurt Cobain",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Susan Hill",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Kurt Cobain",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Peter Straub",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Joe Hill",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "Kurt Cobain",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Kurt Cobain",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "question_number": 15,
+    "is_correct": true,
+    "winning_answer": "horseshoe",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Salt",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "horseshoe",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Ram's horn",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Horseshoe",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "horseshoe",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Shepherd's staff",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 16,
+    "is_correct": false,
+    "winning_answer": "toad",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Panda",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "toad",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "cat",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Panda",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "toad",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "cat",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 17,
+    "is_correct": false,
+    "winning_answer": "Two chickens fighting over a worm.",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Spam with eggs",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "his wife's face",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "A joke",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Kilroy was here",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "his wife's face",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "his child's laughter",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 18,
+    "is_correct": false,
+    "winning_answer": "The Adventure of the Speckled Band",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "The Adventure of the Speckled Band",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "The Adventure of the Speckled Band",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "The Hollow of the Three Hills",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "The Adventure of the Speckled Band",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "The Adventure of the Speckled Band",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "The Adventure of the Speckled Band",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 19,
+    "is_correct": true,
+    "winning_answer": "Yemen",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Yemen",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Oman",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Qatar",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Yemen",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "Yemen",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Yemen",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "question_number": 20,
+    "is_correct": false,
+    "winning_answer": "hermit crab",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Centipede",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "hermit crab",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Chameleon",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Hermit Crab",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "hermit crab",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Hermit crab",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 21,
+    "is_correct": false,
+    "winning_answer": "in the other direction",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "into the wind",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "in the other direction",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "away from it",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Away from it",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "in the other direction",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "away from the ship",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 22,
+    "is_correct": true,
+    "winning_answer": "Longinus",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Longinus",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Longinus",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Longinus",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Longinus",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "Longinus",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Longinus",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "question_number": 23,
+    "is_correct": false,
+    "winning_answer": "Demand",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Demand",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "demand",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Obligation",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Demand",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "demand",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Demand",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 24,
+    "is_correct": false,
+    "winning_answer": "Heart",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Rush",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Heart",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Sting",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Heart",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "Heart",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Heart",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "question_number": 25,
+    "is_correct": true,
+    "winning_answer": "Inferno",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Hell",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Inferno",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Hell",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Inferno",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "Inferno",
+        "is_correct": true
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Inferno",
+        "is_correct": true
+      }
+    ]
   }
 ]
