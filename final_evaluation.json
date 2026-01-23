@@ -1,42 +1,45 @@
 [
   {
     "question_number": 1,
-    "is_correct": false
-  },
-  {
-    "question_number": 2,
-    "is_correct": false
-  },
-  {
-    "question_number": 3,
-    "is_correct": true
-  },
-  {
-    "question_number": 4,
-    "is_correct": true
-  },
-  {
-    "question_number": 5,
-    "is_correct": false
-  },
-  {
-    "question_number": 6,
-    "is_correct": true
-  },
-  {
-    "question_number": 7,
-    "is_correct": false
-  },
-  {
-    "question_number": 8,
-    "is_correct": true
-  },
-  {
-    "question_number": 9,
-    "is_correct": false
-  },
-  {
-    "question_number": 10,
-    "is_correct": false
+    "is_correct": false,
+    "winning_answer": "Wing men",
+    "solver_details": [
+      {
+        "solver_id": "solver_1",
+        "type": "initial",
+        "answer": "Matchmakers",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "initial",
+        "answer": "Wing men",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "initial",
+        "answer": "Matchmakers of",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_1",
+        "type": "refined",
+        "answer": "Match makers",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_2",
+        "type": "refined",
+        "answer": "Wing men",
+        "is_correct": false
+      },
+      {
+        "solver_id": "solver_3",
+        "type": "refined",
+        "answer": "Match makers",
+        "is_correct": false
+      }
+    ]
   }
 ]

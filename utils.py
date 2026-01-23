@@ -43,6 +43,7 @@ def run_parallel_task(task_func, items, *args):
 
 def run_final_evaluation(results_path: str, output_path: str):
     print("\n\n>>> STARTING FINAL EVALUATION...")
+    import time
     
     with open(results_path, "r") as f:
         results = json.load(f)
@@ -57,31 +58,74 @@ def run_final_evaluation(results_path: str, output_path: str):
         question = item['question']
         correct = item['correct_answer']
         
-        # Extract winning answer from process output
+        # Helper function for evaluating a single answer
+        def evaluate_answer(answer_text, label):
+            eval_prompt = get_evaluation_prompt(q_num, question, correct, answer_text)
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    result = evaluator_model.send_message(eval_prompt, EvaluationResult)
+                    return result
+                except Exception as e:
+                    if attempt == max_retries - 1:
+                        print(f"Error evaluating {label} for Q{q_num}: {e}")
+                        return None
+                    else:
+                        time.sleep(2)
+            return None
+
+        # 1. Evaluate Winning Answer
         if item.get('process_output') and item['process_output'].get('final_verdict'):
             winning_ans = item['process_output']['final_verdict']['winning_answer']
         else:
             winning_ans = "NO ANSWER PROVIDED"
 
-        eval_prompt = get_evaluation_prompt(q_num, question, correct, winning_ans)
-        max_retries = 3
-        for attempt in range(max_retries):
-            try:
-                eval_result = evaluator_model.send_message(eval_prompt, EvaluationResult)
-                evaluation_summary.append(eval_result.model_dump())
-                print(f"Question {q_num}: {'CORRECT' if eval_result.is_correct else 'INCORRECT'}")
-                break
-            except Exception as e:
-                if attempt == max_retries - 1:
-                    print(f"Error evaluating question {q_num}: {e}")
-                    evaluation_summary.append({
-                        "question_number": q_num if isinstance(q_num, int) else 0,
-                        "is_correct": False,
-                    })
-                else:
-                    print(f"Retry {attempt+1}/{max_retries} for question {q_num}...")
-                    import time
-                    time.sleep(2)
+        winner_result = evaluate_answer(winning_ans, "Final Winner")
+        
+        # Base entry (compatible with existing schema)
+        entry = {
+            "question_number": q_num if isinstance(q_num, int) else 0,
+            "is_correct": winner_result.is_correct if winner_result else False,
+            "winning_answer": winning_ans,
+            "solver_details": []
+        }
+        
+        print(f"Question {q_num} (Winner): {'CORRECT' if entry['is_correct'] else 'INCORRECT'}")
+
+        # 2. Evaluate Individual Solvers
+        process_out = item.get('process_output', {})
+        
+        # Evaluate Initial Answers
+        for sol in process_out.get('initial_solutions', []):
+            s_id = sol.get('solver_id', 'unknown')
+            ans = sol.get('response', {}).get('answer', '')
+            res = evaluate_answer(ans, f"Solver {s_id} Initial")
+            is_correct = res.is_correct if res else False
+            
+            entry['solver_details'].append({
+                "solver_id": s_id,
+                "type": "initial",
+                "answer": ans,
+                "is_correct": is_correct
+            })
+            print(f"  Solver {s_id} (Initial): {'CORRECT' if is_correct else 'INCORRECT'}")
+
+        # Evaluate Refined Answers
+        for sol in process_out.get('refined_solutions', []):
+            s_id = sol.get('solver_id', 'unknown')
+            ans = sol.get('refined_response', {}).get('refined_answer', '')
+            res = evaluate_answer(ans, f"Solver {s_id} Refined")
+            is_correct = res.is_correct if res else False
+            
+            entry['solver_details'].append({
+                "solver_id": s_id,
+                "type": "refined",
+                "answer": ans,
+                "is_correct": is_correct
+            })
+            print(f"  Solver {s_id} (Refined): {'CORRECT' if is_correct else 'INCORRECT'}")
+
+        evaluation_summary.append(entry)
 
     with open(output_path, "w") as f:
         json.dump(evaluation_summary, f, indent=2)
