@@ -1,6 +1,6 @@
 # Multi-LLM Collaborative Debate System
 
-This project implements a multi-agent debate system where three LLMs collaboratively solve challenging problems ("What? Where? When?" style riddles, logic puzzles, physics, etc.). The system uses a structured workflow involving independent solution generation, peer review, refinement, and a final judgment phase.
+This project implements a multi-agent debate system where three LLMs collaboratively solve challenging problems ("What? Where? When?" questions). The system uses a structured workflow involving independent solution generation, peer review, refinement, and a final judgment phase.
 
 ## System Architecture
 
