@@ -83,3 +83,9 @@ The system monitors several key performance indicators to validate the effective
 *   `evaluate.py`: Script for calculating accuracy metrics and generating plots.
 *   `utils.py`: Helper functions for role distribution, concurrent execution, and evaluation logic.
 *   `results.json`: Output file containing the full trace of the debate for each question.
+
+## Team Members
+
+*   Nikoloz Rusishvili
+*   Mariam Vanadze
+*   Demetre Kanachadze
